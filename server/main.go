@@ -22,14 +22,14 @@ func main() {
 
 	// Main Site
 	site := fiber.New()
-	hosts["localhost:5000"] = &Host{site}
+	hosts["localhost:8080"] = &Host{site}
 	// site.Get("/", func(c *fiber.Ctx) error {
 	// 	return c.SendString("this site")
 	// })
 	SiteRouter(site)
 	// API for other shitty things
 	api := fiber.New()
-	hosts["api.localhost:5000"] = &Host{api}
+	hosts["api.localhost:8080"] = &Host{api}
 	// api.Get("/", func(c *fiber.Ctx) error {
 	// 	return c.SendString("this shit is working")
 	// })
@@ -47,5 +47,5 @@ func main() {
 		return nil
 	})
 
-	app.Listen(":5000")
+	app.Listen(":8080")
 }
