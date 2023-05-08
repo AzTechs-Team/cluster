@@ -1,0 +1,162 @@
+import React from "react";
+import Image from "next/image";
+
+import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
+
+const Interact = () => {
+    return (
+        <Flex
+            mx={{ base: -6, md: "auto" }}
+            bgColor={"primaryLight"}
+            borderRadius={"xl"}
+            align={"center"}
+            py={10}
+            px={{ base: 4, lg: 24 }}
+            flexDir={"column"}
+            className="dots"
+            mb={20}
+        >
+            <Box bgColor={"rgba(0,0,0,0.2)"} borderRadius={"full"} p={1} mb={8}>
+                <Text
+                    borderRadius={"full"}
+                    textTransform={"uppercase"}
+                    bgColor={"white"}
+                    px={6}
+                    fontWeight={700}
+                >
+                    discover. connect. create
+                </Text>
+            </Box>
+
+            <Heading mb={20} textAlign={"center"}>
+                Interact with different{" "}
+                <Box
+                    display={"inline"}
+                    mr={3}
+                    bgColor={"primary"}
+                    color={"white"}
+                    borderRadius={"xl"}
+                    px={2}
+                >
+                    communities
+                </Box>
+                and get a glimpse of{" "}
+                <Box
+                    display={"inline"}
+                    mr={3}
+                    bgColor={"primary"}
+                    color={"white"}
+                    borderRadius={"xl"}
+                    px={2}
+                >
+                    events
+                </Box>
+            </Heading>
+
+            <Flex
+                flexDir={{ base: "column", md: "row" }}
+                justify={"center"}
+                align={"center"}
+                gap={10}
+                mb={24}
+            >
+                <Flex
+                    w={{ base: "full", md: "xl" }}
+                    flexDir={"column"}
+                    align={{ base: "center", md: "flex-start" }}
+                    textAlign={{ base: "center", md: "left" }}
+                >
+                    <Image
+                        src="/assets/images/home/events_logo.png"
+                        alt="IDTA"
+                        loading="eager"
+                        style={{ objectFit: "contain" }}
+                        width={60}
+                        height={60}
+                    />
+                    <Heading mb={4}>Moments to remember</Heading>
+                    <Text textStyle={"body"} mb={4}>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sem ex,
+                        vestibulum sed enim ac, consequat feugiat ante. Etiam velit lorem, efficitur
+                        vitae vestibulum nec, condimentum eu ligula. Quisque
+                    </Text>
+                    <Button variant={"secondary"} w={"fit-content"}>
+                        Explore events
+                    </Button>
+                </Flex>
+
+                <Flex flexDir={"column"} className="hover">
+                    <Image
+                        src="/assets/images/home/event_card_illustration.png"
+                        alt="IDTA"
+                        loading="eager"
+                        style={{ objectFit: "contain" }}
+                        width={300}
+                        height={300}
+                    />
+                    <Image
+                        src="/assets/images/home/loc_card_illustration.png"
+                        alt="IDTA"
+                        loading="eager"
+                        style={{ objectFit: "contain" }}
+                        width={200}
+                        height={200}
+                    />
+                </Flex>
+            </Flex>
+
+            <Flex
+                flexDir={{ base: "column", md: "row-reverse" }}
+                justify={"center"}
+                align={"center"}
+                gap={10}
+            >
+                <Flex
+                    w={{ base: "full", md: "xl" }}
+                    flexDir={"column"}
+                    align={{ base: "center", md: "flex-end" }}
+                    textAlign={{ base: "center", md: "right" }}
+                >
+                    <Image
+                        src="/assets/images/home/community_logo.png"
+                        alt="IDTA"
+                        loading="eager"
+                        style={{ objectFit: "contain", float: "right" }}
+                        width={60}
+                        height={60}
+                    />
+                    <Heading mb={4}>Moments to remember</Heading>
+                    <Text textStyle={"body"} mb={4}>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sem ex,
+                        vestibulum sed enim ac, consequat feugiat ante. Etiam velit lorem, efficitur
+                        vitae vestibulum nec, condimentum eu ligula. Quisque
+                    </Text>
+                    <Button variant={"secondary"} w={"fit-content"}>
+                        Explore events
+                    </Button>
+                </Flex>
+
+                <Flex flexDir={"column"} className="hover">
+                    <Image
+                        src="/assets/images/home/small_community_card_illustration.png"
+                        alt="IDTA"
+                        loading="eager"
+                        style={{ objectFit: "contain", marginBottom: "-6rem" }}
+                        width={300}
+                        height={300}
+                    />
+                    <Image
+                        src="/assets/images/home/community_card_illustration.png"
+                        alt="IDTA"
+                        loading="eager"
+                        style={{ objectFit: "contain" }}
+                        width={550}
+                        height={550}
+                    />
+                </Flex>
+            </Flex>
+        </Flex>
+    );
+};
+
+export default Interact;
