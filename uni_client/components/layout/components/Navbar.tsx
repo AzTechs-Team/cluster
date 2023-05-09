@@ -64,7 +64,7 @@ const Navbar = () => {
                 flexDir={"row"}
                 justify={"space-between"}
                 align={"center"}
-                w={{ base: "full", lg: "xl" }}
+                w={{ base: "full", lg: "md" }}
             >
                 {/* for smaller screens */}
                 <Flex
@@ -73,7 +73,7 @@ const Navbar = () => {
                     justify={"space-between"}
                     align={"center"}
                 >
-                    <Link href="/">
+                    <Link href="/explore">
                         <Flex w={12} h={12} pos={"relative"}>
                             <Image
                                 src={"/assets/images/logo.png"}
@@ -120,9 +120,10 @@ const Navbar = () => {
                         variant="primary"
                         display={{ base: "none", lg: "block" }}
                         h={"2.8rem"}
+                        verticalAlign={"center"}
                         px={6}
                     >
-                        <Link href="/pricing">Get started</Link>
+                        <Link href="/pricing">Logout</Link>
                     </Button>
                 </Flex>
             </Flex>
