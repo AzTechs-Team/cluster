@@ -1,4 +1,4 @@
-import { UserProps } from "@/models/contentModels";
+import { EventProps, UserProps } from "@/models/contentModels";
 import { atom } from "recoil";
 
 const loggedInState = atom({
@@ -11,4 +11,9 @@ const userDetailsState = atom({
     default:<UserProps>{} 
 })
 
-export { loggedInState, userDetailsState }
+const eventsState = atom({
+    key: "events", 
+    default: <Array<EventProps>>[]
+});
+
+export { loggedInState, userDetailsState, eventsState }

@@ -1,13 +1,16 @@
 import { Box, Flex, Heading } from "@chakra-ui/react";
 import React from "react";
-import { events } from "@/configs/eventsContent";
+// import { events } from "@/configs/eventsContent";
 import { users } from "@/configs/userContent";
 import { EventProps } from "@/models/contentModels";
 import EventCard from "@/components/tokens/EventCard";
+import { eventsState } from "@/provider";
+import { useRecoilState } from "recoil";
 
 const PastEvents = () => {
     const user = users[0];
     const pastEvents: Array<EventProps> = [];
+    const [events, setEvents] = useRecoilState(eventsState);
 
     user.eventId.forEach((e) => {
         const details = events.filter((ev) => ev.id === e)[0];

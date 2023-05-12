@@ -53,7 +53,6 @@ const ContentCard: FC<EventContentProps> = ({ description, title }) => {
 };
 
 const Content: FC<EventProps> = (props) => {
-    
     return (
         <Flex flexDir={"column"} align={"flex-start"} w={{ lg: "full" }}>
             <Text textStyle={"subHeading"} mb={6} borderBottomWidth={2} borderColor={"primary"}>
@@ -73,9 +72,10 @@ const Content: FC<EventProps> = (props) => {
                 Event highlights:
             </Text>
             <Flex flexWrap={"wrap"} flexDir={"row"} gap={2} rowGap={2} mb={6}>
-                {props.shortDescription.map((item, i) => (
-                    <IncludeCard key={i} description={item.description} title={item.title} />
-                ))}
+                {props.shortDescription.map((item, i) => {
+                    const j = JSON.parse(item);
+                    return <IncludeCard key={i} description={j.description} title={j.title} />;
+                })}
             </Flex>
 
             <Flex
@@ -88,9 +88,10 @@ const Content: FC<EventProps> = (props) => {
             >
                 <Text textStyle={"subHeading"}>Timeline</Text>
                 <Flex flexDir={"column"} mt={4} gap={4}>
-                    {props.longDescription.map((item, i) => (
-                        <ContentCard key={i} description={item.description} title={item.title} />
-                    ))}
+                    {props.longDescription.map((item, i) => {
+                        const j = JSON.parse(item);
+                        return <ContentCard key={i} description={j.description} title={j.title} />;
+                    })}
                 </Flex>
             </Flex>
 
@@ -98,7 +99,7 @@ const Content: FC<EventProps> = (props) => {
                 Location
             </Text>
             <Box w={"full"} h={"xs"}>
-                <iframe className="map" src={props.location.mapUrl}></iframe>
+                <iframe className="map" src={JSON.parse(props.location).mapUrl}></iframe>
             </Box>
             <Flex
                 borderRadius={"lg"}
@@ -109,7 +110,7 @@ const Content: FC<EventProps> = (props) => {
                 mt={6}
             >
                 <Box bgColor={"white"} p={6} borderRadius={"lg"}>
-                    <Tag bgColor={"primary"}>{props.location.city}</Tag>
+                    <Tag bgColor={"primary"}>{JSON.parse(props.location).city}</Tag>
                     <HStack pt={2} cursor={"pointer"}>
                         <Image
                             src={"/assets/icons/location_pin.svg"}
@@ -117,7 +118,7 @@ const Content: FC<EventProps> = (props) => {
                             width={12}
                             height={12}
                         />
-                        <Text>{props.location.address}</Text>
+                        <Text>{JSON.parse(props.location).address}</Text>
                     </HStack>
                 </Box>
             </Flex>

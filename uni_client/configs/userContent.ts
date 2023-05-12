@@ -7,7 +7,8 @@ const users: Array<UserProps> = [
         userName: "User anme",
         userEmail: "User email",
         eventId: [],
-        userType: "Student"
+        userType: "Student",
+        onBoarded: false
     },
 ];
 
@@ -19,7 +20,8 @@ const universities: Array<UserProps> = [
         userName: "User anme",
         userEmail: "User email",
         eventId: [],
-        userType: "Student"
+        userType: "Student",
+        onBoarded: false
     }
 ]
 

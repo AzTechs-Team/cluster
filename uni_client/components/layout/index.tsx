@@ -21,16 +21,19 @@ const Layout: FC<Props> = ({ children }) => {
         if (details) {
             const d = JSON.parse(details);
             setUserDetails(d);
+
+            if(!d.onBoarded){
+                router.replace("/profile/edit");
+            }
+
             if (d.userType === "Student" && router.asPath == "/dashboard")
                 router.replace("/explore", "/explore");
 
             if (d.userType !== "Student" && router.asPath == "/explore")
                 router.replace("/dashboard", "/dashboard");
 
-            if (d.userType === "Student") router.replace("/explore", "/explore");
-            else router.replace("/dashboard", "/dashboard");
-        }else{
-            router.replace("/", "/");
+            if (d.userType === "Student" && router.asPath == "/") router.replace("/explore", "/explore");
+            else if(router.asPath == "/") router.replace("/dashboard", "/dashboard");
         }
     }, [router.asPath]);
     

@@ -105,7 +105,7 @@ const Details: FC<EventProps> = (props) => {
                                 description={props.time}
                             />
                         </Stack>
-                        <Flex
+                        {/* <Flex
                             className={"glassEffect"}
                             p={2}
                             borderRadius="full"
@@ -114,7 +114,7 @@ const Details: FC<EventProps> = (props) => {
                             <Button variant={"primary"} size={"md"} w={"full"}>
                                 Register now
                             </Button>
-                        </Flex>
+                        </Flex> */}
                     </Flex>
 
                     <Box
@@ -126,7 +126,7 @@ const Details: FC<EventProps> = (props) => {
                         zIndex={20}
                         px={{ base: 6, md: 12, lg: 24 }}
                     >
-                        <Flex
+                        {/* <Flex
                             className={"glassEffect"}
                             p={2}
                             borderRadius="full"
@@ -137,7 +137,7 @@ const Details: FC<EventProps> = (props) => {
                             <Button variant={"primary"} size={"lg"} w={"full"}>
                                 Register now
                             </Button>
-                        </Flex>
+                        </Flex> */}
                     </Box>
                 </Flex>
             </Box>

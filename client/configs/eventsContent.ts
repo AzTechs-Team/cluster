@@ -2,7 +2,7 @@ import { EventProps } from "@/models/contentModels";
 
 const events: Array<EventProps> = [
     {
-        id: 1,
+        id: "1",
         date: "7/5/2023",
         time: "10:00 pm",
         details:
@@ -34,7 +34,7 @@ const events: Array<EventProps> = [
         ],
     },
     {
-        id: 2,
+        id: "2",
         date: "7/5/2023",
         time: "10:00 pm",
         details:
@@ -69,7 +69,7 @@ const events: Array<EventProps> = [
 
 const highlightEvents: Array<EventProps> = [
     {
-        id: 1,
+        id: "1",
         date: "7/5/2023",
         time: "10:00 pm",
         details:
@@ -101,7 +101,7 @@ const highlightEvents: Array<EventProps> = [
         ],
     },
     {
-        id: 2,
+        id: "2",
         date: "7/5/2023",
         time: "10:00 pm",
         details:

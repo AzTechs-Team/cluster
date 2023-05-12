@@ -6,17 +6,20 @@ import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons";
 import { EventProps } from "@/models/contentModels";
 import EventHighlightCard from "../../tokens/EventHighlightCard";
 import { highlightEvents } from "@/configs/eventsContent";
+import { useRecoilState } from "recoil";
+import { eventsState } from "@/provider";
 
 const Highlights = () => {
-    const [active, setActive] = useState<EventProps>(highlightEvents[0]);
-    const [activeIndex, setActiveIndex] = useState(0);
+    const [events, setEvents] = useRecoilState(eventsState);
+    // const [active, setActive] = useState<EventProps>(events[0]);
+    // const [activeIndex, setActiveIndex] = useState(0);
 
-    useEffect(() => {
-        if (activeIndex < highlightEvents.length && activeIndex >= 0)
-            setActive(highlightEvents[activeIndex]);
-        else if (activeIndex < 0) setActiveIndex(highlightEvents.length - 1);
-        else setActiveIndex(0);
-    }, [activeIndex]);
+    // useEffect(() => {
+    //     if (activeIndex < highlightEvents.length && activeIndex >= 0)
+    //         setActive(highlightEvents[activeIndex]);
+    //     else if (activeIndex < 0) setActiveIndex(highlightEvents.length - 1);
+    //     else setActiveIndex(0);
+    // }, [activeIndex]);
 
     return (
         <Box mb={20}>
@@ -53,7 +56,7 @@ const Highlights = () => {
                     justifyContent={"flex-end"}
                     mb={4}
                 >
-                    <IconButton
+                    {/* <IconButton
                         icon={<ArrowBackIcon color={"white"} />}
                         onClick={() => setActiveIndex(activeIndex - 1)}
                         aria-label="prev"
@@ -65,15 +68,15 @@ const Highlights = () => {
                         onClick={() => setActiveIndex(activeIndex + 1)}
                         aria-label="next"
                         variant={"outline"}
-                    ></IconButton>
+                    ></IconButton> */}
                 </Box>
-                <Flex flexDir={"row"} align={"center"}>
+                {/* <Flex flexDir={"row"} align={"center"}>
                     {highlightEvents.map((item, i) => (
-                        <Box key={i} className={item.id === active.id ? "showCard" : "hideCard"}>
-                            <EventHighlightCard {...item} />
-                        </Box>
-                    ))}
-                </Flex>
+                        <Box key={i} className={item.id === active.id ? "showCard" : "hideCard"}> */}
+                <EventHighlightCard {...events[0]} />
+                {/* </Box> */}
+                {/* ))}
+                </Flex> */}
             </Flex>
         </Box>
     );

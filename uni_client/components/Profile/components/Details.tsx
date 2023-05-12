@@ -15,7 +15,7 @@ import { EditIcon } from "@chakra-ui/icons";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import EventHighlightCard from "@/components/tokens/EventHighlightCard";
-import { events } from "@/configs/eventsContent";
+// import { events } from "@/configs/eventsContent";
 import { EventProps } from "@/models/contentModels";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -25,10 +25,13 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Mousewheel, Pagination } from "swiper";
 import Link from "next/link";
+import { useRecoilState } from "recoil";
+import { eventsState } from "@/provider";
 
 const Details = () => {
     const user = users[0];
     const [value, onChange] = useState(new Date());
+    const [events, setEvents] = useRecoilState(eventsState);
     const [activeEvents, setActiveEvents] = useState(Array<EventProps>);
     const keyValue = useMemo(() => Math.random(), [value]);
 
@@ -40,13 +43,15 @@ const Details = () => {
     });
 
     const eventDates: Array<string> = registeredEventDetails.map((e) =>
-        new Date(e.date).toDateString()
+        new Date(e.date).toLocaleDateString("en-US", { timeZone: "Asia/Kolkata" })
     );
 
     const dateChange = (value: any) => {
         onChange(value);
         let updatedData = registeredEventDetails.filter(
-            (e) => value.toDateString() === new Date(e.date).toDateString()
+            (e) =>
+                value.toDateString() ===
+                new Date(e.date).toLocaleDateString("en-US", { timeZone: "Asia/Kolkata" })
         );
         setActiveEvents(updatedData);
 

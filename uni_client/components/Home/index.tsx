@@ -53,6 +53,7 @@ const Home = () => {
                     userEmail: res.userEmail,
                     userName: res.userName,
                     userType: res.userType,
+                    onBoarded: res.onBoarded,
                 });
 
                 localStorage.setItem(
@@ -64,6 +65,7 @@ const Home = () => {
                         userEmail: res.userEmail,
                         userName: res.userName,
                         userType: res.userType,
+                        onBoarded: res.onBoarded,
                     })
                 );
 

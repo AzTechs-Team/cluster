@@ -5,6 +5,7 @@ import { EventProps } from "@/models/contentModels";
 import Event from "@/components/Event";
 import {events} from '@/configs/eventsContent';
 import ErrorCard from "@/components/tokens/ErrorCard";
+import { getEvent } from "@/helpers/appwrite";
 
 type Props = {
     data: EventProps;
@@ -29,9 +30,8 @@ export async function getStaticPaths() {
 export async function getStaticProps(context: any) {
     const { slug } = context.params;
 
-    const data = events.filter((e) => e.slug == slug);
-
-    if(!data.length)
+    const data = await getEvent(slug);
+    if(!data)
         return {
             props: {
                 data: null
@@ -40,7 +40,7 @@ export async function getStaticProps(context: any) {
 
     return {
         props: {
-            data: data[0]
+            data: data
         },
     };
 }

@@ -21,11 +21,17 @@ type EventProps = {
     previewDetails: string;
     slug: string;
     tags: Array<string>;
-    location: LocationProps;
-    shortDescription: Array<EventContentProps>;
-    longDescription: Array<EventContentProps>;
-    participants: Array<string>;
-    clubId: Array<string>;
+    location: any;
+    shortDescription: Array<any>;
+    longDescription: Array<any>;
+    participants?: Array<string>;
+    clubId?: Array<string>;
+    $collectionId?: string;
+    $createdAt?: string;
+    $databaseId?: string;
+    $id?: string;
+    $permissions?: Array<any>;
+    $updatedAt?: string;
 };
 
 type UserProps = {
@@ -35,6 +41,7 @@ type UserProps = {
     eventId: Array<string>;
     bio: string;
     userType: string;
+    onBoarded: boolean;
 }
 
 // type UniversityProps = {

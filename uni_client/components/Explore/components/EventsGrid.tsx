@@ -1,11 +1,14 @@
 import EventCard from "@/components/tokens/EventCard";
 import SearchBox from "@/components/tokens/Searchbox";
 import { events } from "@/configs/eventsContent";
+import { eventsState } from "@/provider";
 import { Box, Flex, Heading } from "@chakra-ui/react";
 import React, { useState } from "react";
+import { useRecoilState } from "recoil";
 
 const EventsGrid = () => {
     const [search, setSearch] = useState("");
+    const [events, setEvents] = useRecoilState(eventsState);
     const [filteredEvents, setFilteredEvents] = useState(events);
 
     const searchFilterFunction = (text: string) => {

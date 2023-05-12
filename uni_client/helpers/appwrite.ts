@@ -41,4 +41,40 @@ const getUserDetails = async (id: string) => {
     }
 };
 
-export { auth, getUserDetails};
+const getEventsData = async () => {
+    const client = init();
+    const databases = new Databases(client);
+
+    const data = await databases.listDocuments("6457bdb4ab615301c5a4", "6457c8bda9310dc39a42");
+    return data;
+};
+const getEvent = async (slug: string) => {
+    const client = init();
+    const databases = new Databases(client);
+
+    const data = await databases.listDocuments("6457bdb4ab615301c5a4", "6457c8bda9310dc39a42", [
+        Query.equal("slug", slug),
+    ]);
+    return data.documents[0];
+};
+
+const updatePassword = async (password: string) => {
+    const client = init();
+    const account = new Account(client);
+    console.log(client);
+
+    await account.updatePassword(password, 'cluster@nuv');
+};
+
+const updateUser = async (id: string, name: string, bio: string, onBoarded: boolean = true) => {
+    const client = init();
+    const databases = new Databases(client);
+
+    await databases.updateDocument("6457bdb4ab615301c5a4", "6457bdbf7dec1967e4fa", id, {
+        userName: name,
+        bio: bio,
+        onBoarded: onBoarded,
+    });
+};
+
+export { auth, getUserDetails, getEventsData, getEvent, updatePassword, updateUser };

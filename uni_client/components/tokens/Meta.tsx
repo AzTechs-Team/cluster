@@ -18,15 +18,15 @@ const Meta = (meta: MetaSettings) => {
     <Head>
       <meta name="theme-color" content="#FFFFFF" />
 
-      <title>{"Cluster"}</title>
+      <title>{"NUV Cluster"}</title>
       {meta.og_title && <meta name="og:title" property="og:title" content={"Cluster"} />}
       {meta.twitter_title && <meta name="twitter:title" content={"Cluster"} />}
 
-      {meta.description && <meta name="description" content={"Community portal for University"} />}
-      {meta.og_description && <meta name="og:description" content={"Community portal for University"} />}
-      {meta.twitter_description && <meta name="twitter:description" content={"Community portal for University"} />}
+      {meta.description && <meta name="description" content={"Community portal for Navrachana University"} />}
+      {meta.og_description && <meta name="og:description" content={"Community portal for Navrachana University"} />}
+      {meta.twitter_description && <meta name="twitter:description" content={"Community portal for Navrachana University"} />}
 
-      {meta.keywords && <meta name="keywords" content={"Cluster, Community, University, Events"} />}
+      {meta.keywords && <meta name="keywords" content={"Cluster, Community, Navrachana University, Events"} />}
 
       {/* <meta name="og:image" content={""} /> */}
     </Head>
