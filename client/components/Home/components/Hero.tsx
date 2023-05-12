@@ -45,16 +45,29 @@ const Hero = () => {
                     src="/assets/images/style_logo.png"
                     alt="Cluster"
                     loading="eager"
-                    style={{ objectFit: "contain" }}
-                    width={800}
-                    height={450}
+                    style={{ objectFit: "contain", marginTop: "14rem" }}
+                    width={900}
+                    height={500}
                 />
+                <Text textStyle={"subHeading"} textAlign={"center"} color={"white"} px={4}>
+                    One-stop platform to get all details about university events, community, or
+                    otherwise.
+                </Text>
+
+                <Box display={{ base: "none", lg: "block" }}>
+                    <Image
+                        src="/assets/images/home/hero_b.svg"
+                        alt="Cluster"
+                        loading="eager"
+                        className="hover"
+                        style={{ objectFit: "contain", marginTop: "-28rem" }}
+                        width={1350}
+                        height={550}
+                    />
+                </Box>
 
                 <Stack width={{ base: "auto", md: "2xl", lg: "3xl" }} rowGap={2}>
-                    <Text textStyle={"subHeading"} textAlign={"center"} color={"white"} px={4}>
-                    One-stop platform to get all details about university events, community, or otherwise.
-                    </Text>
-                    <Button
+                    {/* <Button
                         variant={"primary"}
                         bgGradient={"linear(to-r, white, primaryLight 50%, primary 50%)"}
                         color={"primaryLight"}
@@ -66,7 +79,7 @@ const Hero = () => {
                         zIndex={5}
                     >
                         Learn more
-                    </Button>
+                    </Button> */}
                 </Stack>
             </Box>
         </Box>
