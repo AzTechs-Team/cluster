@@ -5,7 +5,7 @@ const nextConfig = {
     domains: ["media.graphassets.com"],
   },
   experimental: {
-    scrollRestoration: true,
+    // scrollRestoration: true,
   },
 }
 

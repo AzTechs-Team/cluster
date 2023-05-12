@@ -11,27 +11,27 @@ const Hero = () => {
     useEffect(() => {
         window.addEventListener("scroll", () => {
             window.addEventListener("scroll", () => {
-                setScrollDown(window.scrollY > 50);
+                setScrollDown(window.scrollY > 100);
             });
         });
     }, [isVisible]);
 
-    useEffect(() => {
-        // if (scrollDown) {
-        //     window.scrollTo({ top: 720, behavior: "smooth" });
-        // }
-    }, [scrollDown]);
+    // useEffect(() => {
+    //     if (scrollDown) {
+    //         window.scrollTo({ top: 720, behavior: "smooth" });
+    //     }
+    // }, [scrollDown]);
 
     const handleCTAScroll = () => {
-        // setScrollDown(false);
-        // window.scrollBy({ top: 720, behavior: "smooth" });
+        setScrollDown(false);
+        window.scrollBy({ top: 720, behavior: "smooth" });
     };
 
     return (
         <Box mx={{ base: -6, md: -12, lg: -24 }} mt={{ base: -28, xl: -36 }} mb={20}>
             <Box
                 ref={boxRef}
-                h={"80vh"}
+                h={"110vh"}
                 bgColor={"primary"}
                 mb={10}
                 display={"flex"}
@@ -43,7 +43,7 @@ const Hero = () => {
             >
                 <Image
                     src="/assets/images/style_logo.png"
-                    alt="IDTA"
+                    alt="Cluster"
                     loading="eager"
                     style={{ objectFit: "contain" }}
                     width={800}

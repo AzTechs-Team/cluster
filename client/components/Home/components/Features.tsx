@@ -12,6 +12,7 @@ import {
     Tabs,
     Text,
 } from "@chakra-ui/react";
+import Link from "next/link";
 
 const Features = () => {
     return (
@@ -106,7 +107,9 @@ const Features = () => {
                 </TabPanels>
             </Tabs>
             <Button variant={"primary"} alignSelf={"flex-start"} px={20}>
-                See Pricing
+                <Link href="/pricing">
+                    See Pricing
+                </Link>
             </Button>
         </Flex>
     );

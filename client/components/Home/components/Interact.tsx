@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 
 import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
+import Link from "next/link";
 
 const Interact = () => {
     return (
@@ -68,7 +69,7 @@ const Interact = () => {
                 >
                     <Image
                         src="/assets/images/home/events_logo.png"
-                        alt="IDTA"
+                        alt="events"
                         loading="eager"
                         style={{ objectFit: "contain" }}
                         width={60}
@@ -81,14 +82,16 @@ const Interact = () => {
                         vitae vestibulum nec, condimentum eu ligula. Quisque
                     </Text>
                     <Button variant={"secondary"} w={"fit-content"}>
-                        Explore events
+                        <Link href="/pricing">
+                            Explore events
+                        </Link>
                     </Button>
                 </Flex>
 
                 <Flex flexDir={"column"} className="hover">
                     <Image
                         src="/assets/images/home/event_card_illustration.png"
-                        alt="IDTA"
+                        alt="events"
                         loading="eager"
                         style={{ objectFit: "contain" }}
                         width={300}
@@ -96,7 +99,7 @@ const Interact = () => {
                     />
                     <Image
                         src="/assets/images/home/loc_card_illustration.png"
-                        alt="IDTA"
+                        alt="events"
                         loading="eager"
                         style={{ objectFit: "contain" }}
                         width={200}
@@ -119,7 +122,7 @@ const Interact = () => {
                 >
                     <Image
                         src="/assets/images/home/community_logo.png"
-                        alt="IDTA"
+                        alt="events"
                         loading="eager"
                         style={{ objectFit: "contain", float: "right" }}
                         width={60}
@@ -132,14 +135,16 @@ const Interact = () => {
                         vitae vestibulum nec, condimentum eu ligula. Quisque
                     </Text>
                     <Button variant={"secondary"} w={"fit-content"}>
-                        Explore events
+                        <Link href="/pricing">
+                            Explore events
+                        </Link>
                     </Button>
                 </Flex>
 
                 <Flex flexDir={"column"} className="hover">
                     <Image
                         src="/assets/images/home/small_community_card_illustration.png"
-                        alt="IDTA"
+                        alt="events"
                         loading="eager"
                         style={{ objectFit: "contain", marginBottom: "-6rem" }}
                         width={300}
@@ -147,7 +152,7 @@ const Interact = () => {
                     />
                     <Image
                         src="/assets/images/home/community_card_illustration.png"
-                        alt="IDTA"
+                        alt="events"
                         loading="eager"
                         style={{ objectFit: "contain" }}
                         width={550}

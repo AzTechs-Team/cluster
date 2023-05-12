@@ -10,19 +10,6 @@ interface FooterItems {
 
 const FOOTER_ITEMS: Array<FooterItems> = [
   {
-    heading: "Resources",
-    items: [
-      {
-        link: "/blogs",
-        label: "Blogs",
-      },
-      {
-        link: "/news",
-        label: "Drone Info",
-      }
-    ],
-  },
-  {
     heading: "Company",
     items: [
       {
@@ -35,12 +22,21 @@ const FOOTER_ITEMS: Array<FooterItems> = [
     heading: "Products",
     items: [
       {
-        link: "/courses",
-        label: "Training",
+        link: "/explore",
+        label: "Events",
       },
       {
-        link: "/news",
-        label: "Guides",
+        link: "/pricing",
+        label: "Pricing",
+      },
+    ],
+  },
+  {
+    heading: "Resources",
+    items: [
+      {
+        link: "/",
+        label: "Coming soon...",
       },
     ],
   },

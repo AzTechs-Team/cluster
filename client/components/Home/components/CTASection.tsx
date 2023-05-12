@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Button, Heading, Text } from "@chakra-ui/react";
+import Link from "next/link";
 
 const CTASection = () => {
     return (
@@ -11,7 +12,9 @@ const CTASection = () => {
                 vestibulum nec, condimentum eu ligula. Quisque
             </Text>
             <Button variant={"primary"} size={"lg"}>
-                Get started now!
+                <Link href="/pricing">
+                    Get started now!
+                </Link>
             </Button>
         </Box>
     );
