@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from "react";
+import React, { FC, ReactNode, useEffect } from "react";
 import { Inter, Roboto_Mono } from 'next/font/google';
 import { Box, ScaleFade } from "@chakra-ui/react";
 
@@ -6,11 +6,33 @@ import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import { useRouter } from "next/router";
 import { inter, space_grotesk } from "../tokens/fonts";
+import { useRecoilState } from "recoil";
+import { userDetailsState } from "@/provider";
 
 type Props = { children: ReactNode };
 
 const Layout: FC<Props> = ({ children }) => {
     const router = useRouter();
+    const [userDetails, setUserDetails] = useRecoilState(userDetailsState);
+
+
+    useEffect(() => {
+        const details = localStorage.getItem("user");
+        if (details) {
+            const d = JSON.parse(details);
+            setUserDetails(d);
+            if (d.userType === "Student" && router.asPath == "/dashboard")
+                router.replace("/explore", "/explore");
+
+            if (d.userType !== "Student" && router.asPath == "/explore")
+                router.replace("/dashboard", "/dashboard");
+
+            if (d.userType === "Student") router.replace("/explore", "/explore");
+            else router.replace("/dashboard", "/dashboard");
+        }else{
+            router.replace("/", "/");
+        }
+    }, [router.asPath]);
     
     return (
         <Box display={"flex"} flexDir={"column"} bgColor={"background"} className={`${inter.variable} ${space_grotesk.variable}`}>

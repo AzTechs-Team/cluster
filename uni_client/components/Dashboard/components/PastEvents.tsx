@@ -1,15 +1,33 @@
-import { Box, Button, Flex, Heading } from "@chakra-ui/react";
-import React from "react";
+import { Box, Button, Flex, HStack, Heading } from "@chakra-ui/react";
+import React, { useState } from "react";
 import { events } from "@/configs/eventsContent";
 import { users } from "@/configs/userContent";
 import { EventProps } from "@/models/contentModels";
 import EventCard from "@/components/tokens/EventCard";
+import SearchBox from "@/components/tokens/Searchbox";
 
 const PastEvents = () => {
     const user = users[0];
     const pastEvents: Array<EventProps> = [];
+    const [search, setSearch] = useState("");
+    const [filteredEvents, setFilteredEvents] = useState(pastEvents);
 
-    user.registeredEvents.forEach((e) => {
+    const searchFilterFunction = (text: string) => {
+        if (text) {
+            const newData = pastEvents.filter(function (item) {
+                const userData = item.name ? item.name.toUpperCase() : "".toUpperCase();
+                const textData = text.toUpperCase();
+                return userData.indexOf(textData) > -1;
+            });
+            setFilteredEvents(newData);
+            setSearch(text);
+        } else {
+            setFilteredEvents(pastEvents);
+            setSearch(text);
+        }
+    };
+
+    user.eventId.forEach((e) => {
         const details = events.filter((ev) => ev.id === e)[0];
         if (new Date(details.date).getTime() < new Date().getTime()) {
             pastEvents.push(details);
@@ -21,9 +39,19 @@ const PastEvents = () => {
             <Heading mb={8} textAlign={"center"}>
                 Past events
             </Heading>
-            <Button variant={"primary"} mb={8}>Add new event</Button>
+            <Flex mb={4} flexDir={{ base: "column", md: "row" }} w={"full"} gap={2}>
+                <Box w={{ base: "full" }}>
+                    <SearchBox
+                        onChange={(text) => searchFilterFunction(text.target.value)}
+                        value={search}
+                    />
+                </Box>
+                <Button variant={"primary"} mb={8}>
+                    Add new event
+                </Button>
+            </Flex>
             <Flex flexDir={"row"} flexWrap={"wrap"} gap={10} justify={"center"}>
-                {pastEvents.map((event, i) => (
+                {filteredEvents.map((event, i) => (
                     <EventCard {...event} key={i} />
                 ))}
             </Flex>

@@ -33,11 +33,15 @@ const Details = () => {
     const keyValue = useMemo(() => Math.random(), [value]);
 
     const registeredEventDetails: Array<EventProps> = [];
-    user.registeredEvents.forEach((element) => {
+    user.eventId.forEach((element) => {
         events.forEach((e) => {
             if (e.id === element) registeredEventDetails.push(e);
         });
     });
+
+    const eventDates: Array<string> = registeredEventDetails.map((e) =>
+        new Date(e.date).toDateString()
+    );
 
     const dateChange = (value: any) => {
         onChange(value);
@@ -51,7 +55,7 @@ const Details = () => {
 
     return (
         <Box mb={20}>
-            <Box bgColor={"primaryLight"} p={6}>
+            <Box bgColor={"primaryLight"} p={6} borderRadius={"lg"}>
                 <Flex
                     borderRadius={"lg"}
                     w={"full"}
@@ -86,7 +90,15 @@ const Details = () => {
                 gap={{ base: 6, md: 8, xl: 12 }}
             >
                 <Box mb={1} mt={8}>
-                    <Calendar onChange={dateChange} value={value} />
+                    <Calendar
+                        onChange={dateChange}
+                        value={value}
+                        tileClassName={({ date, view }) => {
+                            if (eventDates.includes(date.toDateString())) {
+                                return "dateHighlight";
+                            }
+                        }}
+                    />
                 </Box>
 
                 {!activeEvents.length ? (

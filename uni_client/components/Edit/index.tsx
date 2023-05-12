@@ -40,7 +40,6 @@ const Edit = () => {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="Enter name"
-                        bgColor={"primaryLight"}
                     />
                 </FormControl>
                 <FormControl pb={2}>
@@ -50,12 +49,11 @@ const Edit = () => {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="Enter bio"
-                        bgColor={"primaryLight"}
                     />
                 </FormControl>
                 <FormControl pb={2}>
                     <FormLabel>Bio</FormLabel>
-                    <Textarea placeholder="Here is a sample placeholder" bgColor={"primaryLight"} />
+                    <Textarea placeholder="Here is a sample placeholder" />
                 </FormControl>
                 <Button variant={"primary"}> Update </Button>
             </Stack>

@@ -63,9 +63,9 @@ const EventCard: FC<EventProps> = (props) => {
                             >
                                 {props.previewDetails}
                             </Text>
-                            <Flex flexWrap={"wrap"} mb={2}>
+                            <Flex flexWrap={"wrap"} mb={2} gap={2}>
                                 {props.tags.map((tag, i) => (
-                                    <Badge key={i} variant={"primary"}>
+                                    <Badge key={i} variant={"primary"} px={2}>
                                         {tag}
                                     </Badge>
                                 ))}

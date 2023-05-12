@@ -10,7 +10,7 @@ type LocationProps = {
 };
 
 type EventProps = {
-    id: number;
+    id: string;
     name: string;
     previewImage: string;
     photos: Array<string>;
@@ -24,28 +24,31 @@ type EventProps = {
     location: LocationProps;
     shortDescription: Array<EventContentProps>;
     longDescription: Array<EventContentProps>;
+    participants: Array<string>;
+    clubId: Array<string>;
 };
 
 type UserProps = {
-    id: Number;
+    id: string;
     userName: string;
     userEmail: string;
-    registeredEvents: Array<Number>;
+    eventId: Array<string>;
     bio: string;
+    userType: string;
 }
 
-type UniversityProps = {
-    id: Number;
-    name: string;
-    bio: string;
-    email: string;
-    registeredStudents: Array<Number>;
-}
+// type UniversityProps = {
+//     id: Number;
+//     name: string;
+//     bio: string;
+//     email: string;
+//     registered: Array<Number>;
+// }
 
 export type {
     EventProps,
     EventContentProps,
     LocationProps,
     UserProps,
-    UniversityProps
+    // UniversityProps
 };

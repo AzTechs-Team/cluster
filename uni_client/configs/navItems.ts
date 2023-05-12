@@ -5,7 +5,7 @@ interface NavItem {
     href?: string;
 }
 
-const NAV_ITEMS: Array<NavItem> = [
+const NAV_ITEMS1: Array<NavItem> = [
     {
         label: "Explore",
         href: "/explore",
@@ -14,11 +14,18 @@ const NAV_ITEMS: Array<NavItem> = [
         label: "Profile",
         href: "/profile",
     },
-    // {
-    //     label: "Dashboard",
-    //     href: "/dashboard",
-    // },
 ];
 
-export default NAV_ITEMS;
+const NAV_ITEMS2: Array<NavItem> = [
+    {
+        label: "Dashboard",
+        href: "/dashboard",
+    },
+    {
+        label: "Profile",
+        href: "/profile",
+    },
+];
+
+export { NAV_ITEMS1, NAV_ITEMS2 };
 export type { NavItem };

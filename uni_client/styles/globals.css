@@ -76,3 +76,8 @@ section .chakra-popover__content {
   right: 0 !important;
   margin-right: 15px;
 }
+
+.dateHighlight{
+  color: #CCBB90;
+  font-weight: 700;
+}

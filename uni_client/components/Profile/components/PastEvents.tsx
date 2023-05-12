@@ -9,7 +9,7 @@ const PastEvents = () => {
     const user = users[0];
     const pastEvents: Array<EventProps> = [];
 
-    user.registeredEvents.forEach((e) => {
+    user.eventId.forEach((e) => {
         const details = events.filter((ev) => ev.id === e)[0];
         if (new Date(details.date).getTime() < new Date().getTime()) {
             pastEvents.push(details);

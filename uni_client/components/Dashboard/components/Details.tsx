@@ -9,7 +9,7 @@ const Details = () => {
 
     return (
         <Box mb={20}>
-            <Box bgColor={"primaryLight"} p={6}>
+            <Box bgColor={"primaryLight"} p={6} borderRadius={"lg"}>
                 <Flex
                     borderRadius={"lg"}
                     w={"full"}

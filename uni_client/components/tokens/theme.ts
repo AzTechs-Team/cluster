@@ -5,7 +5,8 @@ const Button = defineStyleConfig({
         rounded: "full",
         fontSize: "sm",
         fontWeight: 400,
-        paddingInline: 6
+        paddingInline: 6,
+        fontFamily: "var(--font-space_grotesk)"
     },
     variants: {
         primary: {
@@ -56,9 +57,9 @@ const Badge = defineStyleConfig({
 
 const theme = extendTheme({
     colors: {
-        primaryDark: "#CCBB90",
-        primary: "#CCBB90",
-        primaryLight: "#FCF9F7",
+        primaryDark: "#661126",
+        primary: "#D64D5E",
+        primaryLight: "#FFF4F5",
         background: "#F8F6FA",
         secondaryDark: "",
         secondary: "#000",

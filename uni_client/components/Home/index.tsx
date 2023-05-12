@@ -1,36 +1,84 @@
-import { Box, Button, Flex, FormControl, FormLabel, Heading, Input, useToast } from "@chakra-ui/react";
+import { auth } from "@/helpers/appwrite";
+import { loggedInState, userDetailsState } from "@/provider";
+import {
+    Box,
+    Button,
+    Flex,
+    FormControl,
+    FormLabel,
+    Heading,
+    Input,
+    useToast,
+} from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
 
 const Home = () => {
-    const [email, setEmail] = useState('');
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [loggedIn, setLoggedIn] = useRecoilState(loggedInState);
+    const [userDetails, setUserDetails] = useRecoilState(userDetailsState);
     const toast = useToast();
     const router = useRouter();
 
     const validateEmail = () => {
-            const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-            if (email.length < 0 || !email.match(emailRegex)) {
-                toast({
-                    title: "Enter valid email",
-                    status: "error",
-                    duration: 4000,
-                });
-                return false;
-            }
-            return true;
+        if (email.length < 0 || !email.match(emailRegex)) {
+            toast({
+                title: "Enter valid email",
+                status: "error",
+                duration: 4000,
+            });
+            return false;
+        }
+        return true;
     };
 
-    const login = () => {
+    const login = async () => {
         try {
-            if(validateEmail()){
+            if (validateEmail()) {
                 // authenticate user
-                router.replace("/explore", "/explore");
+
+                const res = await auth(email, password);
+                console.log(res);
+                if (res === false) throw "Error";
+
+                setLoggedIn(true);
+                setUserDetails({
+                    bio: res.bio,
+                    id: res.$id,
+                    eventId: res.eventId,
+                    userEmail: res.userEmail,
+                    userName: res.userName,
+                    userType: res.userType,
+                });
+
+                localStorage.setItem(
+                    "user",
+                    JSON.stringify({
+                        bio: res.bio,
+                        id: res.$id,
+                        eventId: res.eventId,
+                        userEmail: res.userEmail,
+                        userName: res.userName,
+                        userType: res.userType,
+                    })
+                );
+
+                router.replace("/profile", "/profile");
             }
         } catch (error) {
+            toast({
+                title: "Error logging in",
+                status: "error",
+                duration: 4000,
+            });
+            setLoggedIn(false);
             console.log("Error logging in", error);
         }
-    }
+    };
 
     return (
         <Flex
@@ -49,7 +97,7 @@ const Home = () => {
             <Box w={{ base: "full", lg: "md" }}>
                 <FormControl pb={2}>
                     <FormLabel textStyle={"subHeading"} fontSize={"sm"}>
-                        Login with email
+                        University email
                     </FormLabel>
                     <Input
                         type="email"
@@ -58,6 +106,19 @@ const Home = () => {
                         borderColor={"primary"}
                         bgColor={"primaryLight"}
                         placeholder="Enter college email"
+                    />
+                </FormControl>
+                <FormControl pb={4}>
+                    <FormLabel textStyle={"subHeading"} fontSize={"sm"}>
+                        Password
+                    </FormLabel>
+                    <Input
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        borderColor={"primary"}
+                        bgColor={"primaryLight"}
+                        placeholder="Enter password"
                     />
                 </FormControl>
                 <Button variant={"secondary"} w={"full"} onClick={login}>

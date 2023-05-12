@@ -21,8 +21,11 @@ import {
     Collapse,
 } from "@chakra-ui/react";
 
-import NAV_ITEMS from "@/configs/navItems";
+import { NAV_ITEMS1, NAV_ITEMS2, NavItem } from "@/configs/navItems";
 import { useRouter } from "next/router";
+import { loggedInState, userDetailsState } from "@/provider";
+import { useRecoilState } from "recoil";
+import { getUserDetails } from "@/helpers/appwrite";
 
 interface MenuToggle {
     onToggle: () => void;
@@ -45,6 +48,13 @@ const Navbar = () => {
         if (scroll || router.asPath != "/") setGlassNavEffect(true);
         else setGlassNavEffect(false);
     }, [scroll, router.asPath]);
+
+    const logout = () => {
+        localStorage.removeItem("user");
+        router.replace("/", "/");
+    };
+
+    if (router.asPath === "/") return <></>;
 
     return (
         <Box
@@ -123,7 +133,9 @@ const Navbar = () => {
                         verticalAlign={"center"}
                         px={6}
                     >
-                        <Link href="/pricing">Logout</Link>
+                        <Link href="/pricing" onClick={logout}>
+                            Logout
+                        </Link>
                     </Button>
                 </Flex>
             </Flex>
@@ -139,9 +151,12 @@ const DesktopNav: React.FC<MenuToggle> = (props) => {
     const router = useRouter();
     const path = router.asPath;
 
+    const [userDetails, setUserDetails] = useRecoilState(userDetailsState);
+    const navItems = userDetails.userType === "Student" ? NAV_ITEMS1 : NAV_ITEMS2;
+
     return (
         <HStack spacing={{ base: 0 }} gap={2} bgColor={"white"} borderRadius={"full"} px={4}>
-            {NAV_ITEMS.map((navItem) => (
+            {navItems.map((navItem) => (
                 <Popover trigger={"hover"} placement={"bottom-start"} key={navItem.label}>
                     <PopoverTrigger>
                         <Link href={navItem.href ?? "/"}>
@@ -228,6 +243,15 @@ const DesktopNav: React.FC<MenuToggle> = (props) => {
 };
 
 const MobileNav: React.FC<MenuToggle> = (props) => {
+    const router = useRouter();
+    const [userDetails, setUserDetails] = useRecoilState(userDetailsState);
+    const navItems = userDetails.userType === "Student" ? NAV_ITEMS1 : NAV_ITEMS2;
+
+    const logout = () => {
+        localStorage.removeItem("user");
+        router.replace("/", "/");
+    };
+
     return (
         <Box
             className={"hideScrollbar"}
@@ -249,7 +273,7 @@ const MobileNav: React.FC<MenuToggle> = (props) => {
                 divider={<StackDivider color={"gray"} />}
                 className={"glassEffect"}
             >
-                {NAV_ITEMS.map((navItem, inx) => {
+                {navItems.map((navItem, inx) => {
                     const { label, children, href } = navItem;
                     const { isOpen, onToggle, onClose } = useDisclosure();
                     return (
@@ -294,11 +318,11 @@ const MobileNav: React.FC<MenuToggle> = (props) => {
                         </Stack>
                     );
                 })}
-                <Link href={"/"} onClick={props.onToggle}>
-                    <Text fontWeight={600} py={2}>
-                        Get started
+                {/* <Link href={"/"} onClick={props.onToggle}> */}
+                    <Text fontWeight={600} py={2} onClick={logout}>
+                        Logout
                     </Text>
-                </Link>
+                {/* </Link> */}
             </Stack>
         </Box>
     );
