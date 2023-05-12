@@ -1,14 +1,64 @@
 import SearchBox from "@/components/tokens/Searchbox";
 import { universities, users } from "@/configs/userContent";
+import { getAllUsers } from "@/helpers/appwrite";
 import { UserProps } from "@/models/contentModels";
-import { Avatar, Box, Button, Flex, HStack, Heading, Stack, Text } from "@chakra-ui/react";
-import React, { useState } from "react";
+import { allUserDetailsState } from "@/provider";
+import {
+    Avatar,
+    Box,
+    Button,
+    Flex,
+    HStack,
+    Heading,
+    Stack,
+    Text,
+    useDisclosure,
+    Modal,
+    ModalBody,
+    ModalOverlay,
+    ModalContent,
+    ModalHeader,
+    ModalCloseButton,
+    ModalFooter,
+    FormLabel,
+    Textarea,
+    useToast,
+} from "@chakra-ui/react";
+import React, { useState, useEffect } from "react";
+import { useRecoilState } from "recoil";
 
 const StudentDetails = () => {
-    const uni = universities[0];
-    const studentDetails: Array<UserProps> = [];
+    // const uni = universities[0];
+    // const studentDetails: Array<UserProps> = [];
     const [search, setSearch] = useState("");
-    const [filteredStudentDetails, setFilteredStudentDetails] = useState(studentDetails);
+    const [studentDetails, setStudentDetails] = useState<Array<UserProps>>([]);
+    const [filteredStudentDetails, setFilteredStudentDetails] = useState<Array<UserProps>>([]);
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    const [data, setData] = useState("");
+    const toast = useToast();
+
+    useEffect(() => {
+        async function fetch() {
+            let response = await getAllUsers();
+            const e: Array<UserProps> = [];
+            response.documents.forEach((i: any) =>
+                e.push({
+                    bio: i.bio,
+                    eventId: i.eventId,
+                    id: i.$id,
+                    onBoarded: i.onBoarded,
+                    userEmail: i.userEmail,
+                    userName: i.userName,
+                    userType: i.userType,
+                })
+            );
+            setStudentDetails(e);
+            setFilteredStudentDetails(e);
+            console.log(e);
+        }
+
+        fetch();
+    }, []);
 
     const searchFilterFunction = (text: string) => {
         if (text) {
@@ -25,9 +75,22 @@ const StudentDetails = () => {
         }
     };
 
-    uni.eventId.forEach((s:any) => {
-        studentDetails.push(users.filter((u) => u.id == s)[0]);
-    });
+    const addData = () => {
+        if (!data.length) {
+            toast({
+                title: "Enter all details",
+                status: "error",
+                duration: 4000,
+            });
+        } else {
+            // func to add users
+            onClose();
+        }
+    };
+
+    // .eventId.forEach((s:any) => {
+    //     studentDetails.push(users.filter((u) => u.id == s)[0]);
+    // });
 
     return (
         <Box mb={20}>
@@ -39,7 +102,7 @@ const StudentDetails = () => {
                         value={search}
                     />
                 </Box>
-                <Button variant={"primary"} mb={8}>
+                <Button variant={"primary"} mb={8} onClick={onOpen}>
                     Add student
                 </Button>
             </Flex>
@@ -47,10 +110,36 @@ const StudentDetails = () => {
                 {filteredStudentDetails.map((user, i) => (
                     <HStack key={i} w={"full"} bgColor={"primaryLight"} p={4} borderRadius={"lg"}>
                         <Avatar size={"md"} name={user.userName.slice(0, 1)} bgColor={"primary"} />
-                        <Text>{user.userName}</Text>
+                        <Text>{user.onBoarded ? user.userName : user.userEmail}</Text>
                     </HStack>
                 ))}
             </Stack>
+
+            <Modal isOpen={isOpen} onClose={onClose}>
+                <ModalOverlay />
+                <ModalContent>
+                    <ModalHeader>Add students</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody>
+                        <FormLabel>Enter student details</FormLabel>
+                        <Textarea
+                            rows={10}
+                            placeholder="Enter strigified user details"
+                            value={data}
+                            onChange={(e) => setData(e.target.value)}
+                        />
+                    </ModalBody>
+
+                    <ModalFooter>
+                        <Button variant={"ghost"} mr={3} onClick={onClose}>
+                            Close
+                        </Button>
+                        <Button variant="primary" onClick={addData}>
+                            Add
+                        </Button>
+                    </ModalFooter>
+                </ModalContent>
+            </Modal>
         </Box>
     );
 };

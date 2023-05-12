@@ -63,7 +63,7 @@ const updatePassword = async (password: string) => {
     const account = new Account(client);
     console.log(client);
 
-    await account.updatePassword(password, 'cluster@nuv');
+    await account.updatePassword(password, "cluster@nuv");
 };
 
 const updateUser = async (id: string, name: string, bio: string, onBoarded: boolean = true) => {
@@ -77,4 +77,14 @@ const updateUser = async (id: string, name: string, bio: string, onBoarded: bool
     });
 };
 
-export { auth, getUserDetails, getEventsData, getEvent, updatePassword, updateUser };
+const getAllUsers = async () => {
+    const client = init();
+    const databases = new Databases(client);
+
+    const data = await databases.listDocuments("6457bdb4ab615301c5a4", "6457bdbf7dec1967e4fa", [
+        Query.equal("userType", "Student")
+    ]);
+    return data;
+};
+
+export { auth, getUserDetails, getEventsData, getEvent, updatePassword, updateUser, getAllUsers };

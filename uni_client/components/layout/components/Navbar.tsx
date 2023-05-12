@@ -132,10 +132,9 @@ const Navbar = () => {
                         h={"2.8rem"}
                         verticalAlign={"center"}
                         px={6}
+                        onClick={logout}
                     >
-                        <Link href="/pricing" onClick={logout}>
                             Logout
-                        </Link>
                     </Button>
                 </Flex>
             </Flex>
