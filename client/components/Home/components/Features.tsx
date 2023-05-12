@@ -29,13 +29,15 @@ const Features = () => {
             boxShadow={"dark-lg"}
         >
             <Box mb={14}>
-                <Heading mb={2}>Features yo'll need</Heading>
+                <Heading mb={2}>Features that you’ll need</Heading>
                 <Text textStyle={"body"}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sem ex,
-                    vestibulum sed enim ac, consequat feugiat ante. Etiam velit lorem, efficitur
-                    vitae vestibulum nec, condimentum eu ligula. Quisque fermentum lacinia arcu, vel
-                    mattis ligula porta vitae. In eu fringilla tortor. Sed et ligula velit. Donec
-                    vitae ultricies sem. Suspendisse a gravida ante.{" "}
+                Cluster offers you the best features that you'll ever need and can provide a
+                 variety of features to enhance the user experience. 
+                These may include features such as search functionality, interactive, 
+                media content like images and videos, social sharing buttons, and personalized
+                 recommendations based on user behavior. Additionally, websites may also offer
+                  features like e-commerce capabilities, customer reviews and ratings, and user 
+                  account creation and management.{" "}
                 </Text>
             </Box>
             <Tabs variant="soft-rounded" size={"sm"} alignSelf={"flex-start"} color={"white"}>
@@ -58,12 +60,10 @@ const Features = () => {
                             <Box w={{ base: "full", md: "xl" }}>
                                 <Heading mb={4}>For Students</Heading>
                                 <Text textStyle={"body"}>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    Phasellus sem ex, vestibulum sed enim ac, consequat feugiat
-                                    ante. Etiam velit lorem, efficitur vitae vestibulum nec,
-                                    condimentum eu ligula. Quisque fermentum lacinia arcu, vel
-                                    mattis ligula porta vitae. In eu fringilla tortor. Sed et ligula
-                                    velit. Donec vitae ultricies sem. Suspendisse a gravida ante.{" "}
+                                Connect students with shared interests and facilitate in-person gatherings. 
+                                These may include search functionality to find relevant meetups based on 
+                                location or topic, user profiles to share information about interests and 
+                                availability,  like messaging and comments to coordinate logistics and stay in touch.{" "}
                                 </Text>
                             </Box>
                             <Image

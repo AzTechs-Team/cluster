@@ -14,7 +14,7 @@ import Image from "next/image";
 import React from "react";
 
 const Card1 = (props: any) => {
-    const benifits = ["item 1", "item 2", "item 3", "itme 4", "item 5"];
+    const benifits = ["Create and manage up to 10 events","Basic event page templates","Basic registration management","Basic attendance tracking","Basic communication with students","Limited customer support","No personalized branding","No analytics","No advanced features"];
 
     return (
         <Flex
@@ -35,7 +35,7 @@ const Card1 = (props: any) => {
                 height={60}
             />
             <Heading mt={4} fontSize={"3xl"}>
-                Moments to remember
+                Basic Plan
             </Heading>
             <Text textStyle={"subHeading"} fontSize={"4xl"}>
                 {`₹${props.monthly ? 10 : 10 * 12}/mth`}
@@ -51,14 +51,14 @@ const Card1 = (props: any) => {
 };
 
 const Card2 = (props: any) => {
-    const benifits = ["item 1", "item 2", "item 3", "itme 4", "item 5"];
+    const benifits = ["Create and manage unlimited events","Advanced registration management","Advanced attendance tracking","Advanced communication with students","Priority customer support","Personalized branding with university colors","Analytics and insights on student engagement","Advanced features, such as gamification and sponsor promotion"];
 
     return (
         <Flex
             w={{ base: "full", md: "md" }}
             flexDir={"column"}
             align={"flex-start"}
-            bgColor={"primary"}
+            bgColor={"primaryDark"}
             className="dots"
             p={6}
             boxShadow={"lg"}
@@ -73,7 +73,7 @@ const Card2 = (props: any) => {
                 height={60}
             />
             <Heading mt={4} fontSize={"3xl"}>
-                Moments to remember
+                Premium Plan
             </Heading>
             <Text textStyle={"subHeading"} fontSize={"4xl"}>
                 {`₹${props.monthly ? 100 : 100 * 12}/mth`}
@@ -93,9 +93,10 @@ const Plans = () => {
         <Box mb={20} px={{ base: "auto", md: 6, lg: 20 }}>
             <Heading mb={4}>Flexible plans</Heading>
             <Text textStyle={"body"} mb={8}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero deserunt fugiat
-                magni dolorum odio ex facere asperiores corporis dolore impedit temporibus, fugit
-                maxime autem, voluptate, quas aliquam mollitia? Unde, ad.
+            Our website offers flexible pricing plans that can be customized to fit the specific needs 
+            and budget of each university. With our plans, universities can choose from a range of features, 
+            including personalized branding, advanced analytics, and premium support. Whether you are a 
+            small institution or a large university, our flexible plans can help you create and manage student events with ease.
             </Text>
 
             <Tabs variant="soft-rounded" size={"sm"} alignSelf={"flex-start"}>

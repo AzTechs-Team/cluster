@@ -39,9 +39,7 @@ const Hero = () => {
                 </Box>
                 <Heading>Get started today</Heading>
                 <Text textStyle={"body"} mb={4}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sem ex,
-                    vestibulum sed enim ac, consequat feugiat ante. Etiam velit lorem, efficitur
-                    vitae vestibulum nec, condimentum eu ligula. Quisque fermentum lacinia arcu
+                You are one step away from hassle-free development cycle
                 </Text>
 
                 <Input

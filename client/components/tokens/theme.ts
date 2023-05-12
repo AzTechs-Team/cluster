@@ -4,6 +4,7 @@ const Button = defineStyleConfig({
     baseStyle: {
         rounded: "full",
         fontSize: "sm",
+        fontFamily: "var(--font-space_grotesk)",
         fontWeight: 400,
         paddingInline: 6
     },
@@ -12,14 +13,14 @@ const Button = defineStyleConfig({
             bgGradient: "linear(to-r, primary , primaryDark 50%, white 50%)",
             border: "2px",
             borderColor: "primaryDark",
-            color: "primaryDark",
+            color: "primary",
             _hover: {
                 color: "white",
             },
         },
         secondary: {
             color: "darkGray !important",
-            bgGradient: "linear(to-r, #FFF4F5 50%, white 50%)",
+            bgGradient: "linear(to-r, primaryLight 50%, white 50%)",
             _hover: {
                 color: "primary !important",
             },
@@ -56,12 +57,12 @@ const Badge = defineStyleConfig({
 
 const theme = extendTheme({
     colors: {
-        primaryDark: "#CCBB90",
-        primary: "#CCBB90",
-        primaryLight: "#FCF9F7",
-        background: "#F8F6FA",
+        primaryDark: "#D5C8F9",
+        primary: "#9186BF",
+        primaryLight: "#F7F9FC",
+        background: "#FFFFFF",
         secondaryDark: "",
-        secondary: "#000",
+        secondary: "#030122",
         secondaryLight: "",
     },
     fonts: {

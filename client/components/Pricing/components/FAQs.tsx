@@ -58,7 +58,7 @@ const FAQs = () => {
                             <AccordionButton
                                 fontWeight={"bold"}
                                 _expanded={{
-                                    color: "primaryDark",
+                                    color: "primary",
                                     borderColor: "primary",
                                     border: "1",
                                 }}

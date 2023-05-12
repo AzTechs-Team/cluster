@@ -7,9 +7,8 @@ const CTASection = () => {
         <Box mb={20} textAlign={"center"}>
             <Heading mb={2}>What are you waiting for?</Heading>
             <Text textStyle={"body"} mb={8}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sem ex,
-                vestibulum sed enim ac, consequat feugiat ante. Etiam velit lorem, efficitur vitae
-                vestibulum nec, condimentum eu ligula. Quisque
+            Seize the opportunity and take action now. Don't let indecision hold 
+            you back from reaching your goals and potential.
             </Text>
             <Button variant={"primary"} size={"lg"}>
                 <Link href="/pricing">

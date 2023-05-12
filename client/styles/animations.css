@@ -8,16 +8,16 @@
     width: 0;
     height: 4px;
     transition: width .3s;
-    background: linear-gradient(#D64D5E, #661126);
+    background: linear-gradient(#D5C8F9, #9186BF);
 }
 
 .redNavAnimation::after{
-    background: linear-gradient(#FFF4F5, #D64D5E);
+    background: linear-gradient(#F7F9FC, #D5C8F9);
 }
 
 .navAnimation:hover {
     -webkit-text-stroke-width: 0.6px;
-    color: #661126;
+    color: #9186BF;
 }
 
 .navAnimation:hover::after {
@@ -25,7 +25,7 @@
 }
 
 .activeNav {
-    color: #661126;
+    color: #9186BF;
     -webkit-text-stroke-width: 0.6px;
 }
 

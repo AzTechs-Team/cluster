@@ -77,9 +77,9 @@ const Interact = () => {
                     />
                     <Heading mb={4}>Moments to remember</Heading>
                     <Text textStyle={"body"} mb={4}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sem ex,
-                        vestibulum sed enim ac, consequat feugiat ante. Etiam velit lorem, efficitur
-                        vitae vestibulum nec, condimentum eu ligula. Quisque
+                    What is an event? Simply put, an event is a gathering of people for 
+                    a specific purpose. This purpose can be anything from celebrating 
+                    a milestone to learning new skills.
                     </Text>
                     <Button variant={"secondary"} w={"fit-content"}>
                         <Link href="/pricing">
@@ -128,11 +128,12 @@ const Interact = () => {
                         width={60}
                         height={60}
                     />
-                    <Heading mb={4}>Moments to remember</Heading>
+                    <Heading mb={4}>With great anticipation</Heading>
                     <Text textStyle={"body"} mb={4}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sem ex,
-                        vestibulum sed enim ac, consequat feugiat ante. Etiam velit lorem, efficitur
-                        vitae vestibulum nec, condimentum eu ligula. Quisque
+                        Community events provide a wonderful opportunity for people to come 
+                        together, connect, and celebrate. With great anticipation, we look 
+                        forward to these events as they offer a chance to meet new people, 
+                        learn new things, and enjoy shared experiences. 
                     </Text>
                     <Button variant={"secondary"} w={"fit-content"}>
                         <Link href="/pricing">
