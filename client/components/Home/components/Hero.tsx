@@ -51,8 +51,8 @@ const Hero = () => {
                 />
 
                 <Stack width={{ base: "auto", md: "2xl", lg: "3xl" }} rowGap={2}>
-                    <Text textStyle={"body"} textAlign={"center"} color={"white"} px={4}>
-                        short description
+                    <Text textStyle={"subHeading"} textAlign={"center"} color={"white"} px={4}>
+                    One-stop platform to get all details about university events, community, or otherwise.
                     </Text>
                     <Button
                         variant={"primary"}

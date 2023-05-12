@@ -75,7 +75,7 @@ const Footer = () => {
         <Box flexShrink={0} zIndex={30} mt={10}>
             <Box bgColor={"primaryLight"} py={6}>
                 <Box px={{ base: 6, md: 12, lg: 24 }} mb={6}>
-                    <Stack
+                    {/* <Stack
                         spacing={{ base: 2, md: 10 }}
                         direction={{ base: "column", lg: "row" }}
                         align={"center"} 
@@ -99,7 +99,7 @@ const Footer = () => {
                                 Subscribe
                             </Button>
                         </Stack>
-                    </Stack>
+                    </Stack> */}
 
                     <SimpleGrid
                         templateColumns={{ base: "1fr 1fr", lg: "1fr 1fr 1fr 1fr" }}
