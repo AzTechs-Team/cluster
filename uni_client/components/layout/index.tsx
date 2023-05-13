@@ -15,7 +15,6 @@ const Layout: FC<Props> = ({ children }) => {
     const router = useRouter();
     const [userDetails, setUserDetails] = useRecoilState(userDetailsState);
 
-
     useEffect(() => {
         const details = localStorage.getItem("user");
         if (details) {

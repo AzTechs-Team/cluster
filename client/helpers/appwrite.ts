@@ -1,4 +1,4 @@
-import { Client, Databases, Query } from "appwrite";
+import { Client, Databases, ID, Query } from "appwrite";
 
 const init = () => {
     const client = new Client();
@@ -27,4 +27,12 @@ const getEvent = async (slug: string) => {
     return data.documents[0];
 };
 
-export { getEventsData, getEvent };
+const createContact = async(data:any) => {
+    const client = init();
+    const databases = new Databases(client);
+
+    const res = await databases.createDocument("645f0ef977e21c3f7c29","645f0f2b72fa544d8e33", ID.unique(), data);
+    return res;
+}
+
+export { getEventsData, getEvent, createContact };

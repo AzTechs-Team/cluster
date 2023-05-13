@@ -9,43 +9,43 @@ interface FooterItems {
 }
 
 const FOOTER_ITEMS: Array<FooterItems> = [
+  // {
+  //   heading: "Company",
+  //   items: [
+  //     {
+  //       link: "/blogs",
+  //       label: "Blogs",
+  //     },
+  //     {
+  //       link: "/news",
+  //       label: "Drone Info",
+  //     }
+  //   ],
+  // },
+  // {
+  //   heading: "Company",
+  //   items: [
+  //     {
+  //       link: "/about",
+  //       label: "About us",
+  //     }
+  //   ],
+  // },
   {
-    heading: "Resources",
+    heading: "Profile",
     items: [
       {
-        link: "/blogs",
-        label: "Blogs",
+        link: "/profile",
+        label: "Details",
       },
       {
-        link: "/news",
-        label: "Drone Info",
-      }
+        link: "/profile/edit",
+        label: "Edit",
+      },
     ],
   },
   {
-    heading: "Company",
-    items: [
-      {
-        link: "/about",
-        label: "About us",
-      }
-    ],
-  },
-  {
-    heading: "Products",
-    items: [
-      {
-        link: "/courses",
-        label: "Training",
-      },
-      {
-        link: "/news",
-        label: "Guides",
-      },
-    ],
-  },
-  {
-    heading: "Connect",
+    heading: "Support",
     items: [
       {
         link: "mailto:contact@aztechs.in",

@@ -36,7 +36,7 @@ const Edit = () => {
                 duration: 4000,
             });
         } else {
-            await updatePassword(password);
+            if(password.length) await updatePassword(password);
             await updateUser(user.id, name, bio, true);
             const res = await getUserDetails(user.id);
             if (res) {
@@ -65,6 +65,7 @@ const Edit = () => {
                     })
                 );
             }
+            router.push("/profile")
         }
     };
 

@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import {
     Avatar,
     Box,
@@ -37,11 +37,28 @@ const Details = () => {
     const keyValue = useMemo(() => Math.random(), [value]);
 
     const registeredEventDetails: Array<EventProps> = [];
-    user.eventId.forEach((element) => {
-        events.forEach((e) => {
-            if (e.id === element) registeredEventDetails.push(e);
-        });
-    });
+
+    // if (user.userType === "Student") {
+    //     user.eventId.forEach((element) => {
+    //         events.forEach((e) => {
+    //             if (e.id === element) registeredEventDetails.push(e);
+    //         });
+    //     });
+    // }
+
+    useEffect(() => {
+        if (user.userType === "Student") {
+            {
+                user.eventId.forEach((element) => {
+                    events.forEach((e) => {
+                        if (e.id === element) registeredEventDetails.push(e);
+                    });
+                });
+            }
+        }
+    }, [user]);
+
+    console.log(user);
 
     const eventDates: Array<string> = registeredEventDetails.map((e) =>
         new Date(e.date).toLocaleDateString("en-US", { timeZone: "Asia/Kolkata" })
@@ -58,6 +75,8 @@ const Details = () => {
 
         console.log(updatedData);
     };
+
+    if(Object.keys(user).length == 0) return <></>
 
     return (
         <Box mb={20}>
@@ -89,68 +108,72 @@ const Details = () => {
                 <Text px={2}>{user.bio}</Text>
             </Box>
 
-            <Flex
-                flexDir={{ base: "column", xl: "row" }}
-                // justify={"space-around"}
-                // align={"space-between"}
-                gap={{ base: 6, md: 8, xl: 12 }}
-            >
-                <Box mb={1} mt={8}>
-                    <Calendar
-                        onChange={dateChange}
-                        value={value}
-                        tileClassName={({ date, view }) => {
-                            if (eventDates.includes(date.toDateString())) {
-                                return "dateHighlight";
-                            }
-                        }}
-                    />
-                </Box>
+            {user && user.userType === "Student" ? (
+                <>
+                    <Flex
+                        flexDir={{ base: "column", xl: "row" }}
+                        // justify={"space-around"}
+                        // align={"space-between"}
+                        gap={{ base: 6, md: 8, xl: 12 }}
+                    >
+                        <Box mb={1} mt={8}>
+                            <Calendar
+                                onChange={dateChange}
+                                value={value}
+                                tileClassName={({ date, view }) => {
+                                    if (eventDates.includes(date.toDateString())) {
+                                        return "dateHighlight";
+                                    }
+                                }}
+                            />
+                        </Box>
 
-                {!activeEvents.length ? (
-                    <Flex flexDir={"column"}>
-                        <Text mt={10} textStyle={"subHeading"}>
-                            You don't have anything planned for today.
-                        </Text>
-                        <Text color={"primaryDark"}>
-                            <Link href="/explore">Check out more events</Link>
-                        </Text>
+                        {!activeEvents.length ? (
+                            <Flex flexDir={"column"}>
+                                <Text mt={10} textStyle={"subHeading"}>
+                                    You don't have anything planned for today.
+                                </Text>
+                                <Text color={"primaryDark"}>
+                                    <Link href="/explore">Check out more events</Link>
+                                </Text>
+                            </Flex>
+                        ) : (
+                            <Box>
+                                <Text textStyle={"subHeading"}>Registered events</Text>
+                                <Swiper
+                                    direction={"vertical"}
+                                    slidesPerView={1}
+                                    spaceBetween={20}
+                                    mousewheel={true}
+                                    loop={true}
+                                    pagination={{
+                                        clickable: true,
+                                    }}
+                                    autoplay={{ delay: 8000 }}
+                                    modules={[Mousewheel, Pagination]}
+                                    height={276}
+                                    autoHeight={true}
+                                    key={keyValue}
+                                >
+                                    {activeEvents.map((event, i) => {
+                                        return (
+                                            <SwiperSlide key={i}>
+                                                <EventHighlightCard {...event} />
+                                            </SwiperSlide>
+                                        );
+                                    })}
+                                </Swiper>
+                            </Box>
+                        )}
                     </Flex>
-                ) : (
-                    <Box>
-                        <Text textStyle={"subHeading"}>Registered events</Text>
-                        <Swiper
-                            direction={"vertical"}
-                            slidesPerView={1}
-                            spaceBetween={20}
-                            mousewheel={true}
-                            loop={true}
-                            pagination={{
-                                clickable: true,
-                            }}
-                            autoplay={{ delay: 8000 }}
-                            modules={[Mousewheel, Pagination]}
-                            height={276}
-                            autoHeight={true}
-                            key={keyValue}
-                        >
-                            {activeEvents.map((event, i) => {
-                                return (
-                                    <SwiperSlide key={i}>
-                                        <EventHighlightCard {...event} />
-                                    </SwiperSlide>
-                                );
-                            })}
-                        </Swiper>
-                    </Box>
-                )}
-            </Flex>
 
-            <Flex w={"full"} justify={"center"} mt={8}>
-                <Button variant={"primary"} size={"lg"}>
-                    <Link href="/explore">Explore more events</Link>
-                </Button>
-            </Flex>
+                    <Flex w={"full"} justify={"center"} mt={8}>
+                        <Button variant={"primary"} size={"lg"}>
+                            <Link href={"/explore"}>Explore more events</Link>
+                        </Button>
+                    </Flex>
+                </>
+            ) : null}
         </Box>
     );
 };

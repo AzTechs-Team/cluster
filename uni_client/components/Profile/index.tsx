@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Details from "./components/Details";
-import PastEvents from "./components/PastEvents";
+// import PastEvents from "./components/PastEvents";
 import { useRecoilState } from "recoil";
 import { eventsState } from "@/provider";
 import { getEventsData } from "@/helpers/appwrite";
@@ -41,7 +41,7 @@ const Profile = () => {
     return (
         <>
             <Details />
-            <PastEvents />
+            {/* <PastEvents /> */}
         </>
     );
 };

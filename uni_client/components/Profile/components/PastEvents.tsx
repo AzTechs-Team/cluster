@@ -1,5 +1,5 @@
 import { Box, Flex, Heading } from "@chakra-ui/react";
-import React from "react";
+import React, {useEffect} from "react";
 // import { events } from "@/configs/eventsContent";
 import { users } from "@/configs/userContent";
 import { EventProps } from "@/models/contentModels";
@@ -13,12 +13,20 @@ const PastEvents = () => {
     const pastEvents: Array<EventProps> = [];
     const [events, setEvents] = useRecoilState(eventsState);
 
-    user.eventId.forEach((e) => {
-        const details = events.filter((ev) => ev.id === e)[0];
-        if (new Date(details.date).getTime() < new Date().getTime()) {
-            pastEvents.push(details);
+    useEffect(() => {
+        if (user.userType === "Student") {
+            user.eventId.forEach((e) => {
+                const details = events.filter((ev) => ev.id === e)[0];
+                if (new Date(details.date).getTime() < new Date().getTime()) {
+                    pastEvents.push(details);
+                }
+            });
         }
-    });
+    }, [user])
+    
+
+
+    if(Object.keys(user).length == 0) return <></>
 
     return (
         <Flex flexDir={"column"} align={"flex-start"} mb={20}>
