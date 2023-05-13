@@ -4,11 +4,12 @@ import React from "react";
 import { users } from "@/configs/userContent";
 import { EventProps } from "@/models/contentModels";
 import EventCard from "@/components/tokens/EventCard";
-import { eventsState } from "@/provider";
+import { eventsState, userDetailsState } from "@/provider";
 import { useRecoilState } from "recoil";
 
 const PastEvents = () => {
-    const user = users[0];
+    // const user = users[0];
+    const [user, setUser] = useRecoilState(userDetailsState);
     const pastEvents: Array<EventProps> = [];
     const [events, setEvents] = useRecoilState(eventsState);
 

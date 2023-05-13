@@ -24,6 +24,7 @@ import {
     Textarea,
     useToast,
 } from "@chakra-ui/react";
+import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useRecoilState } from "recoil";
 
@@ -75,7 +76,7 @@ const StudentDetails = () => {
         }
     };
 
-    const addData = () => {
+    const addData = async () => {
         if (!data.length) {
             toast({
                 title: "Enter all details",
@@ -84,7 +85,32 @@ const StudentDetails = () => {
             });
         } else {
             // func to add users
-            onClose();
+            try {
+                const res = await axios.post(
+                    "https://cloud.appwrite.io/v1/functions/64599c9913234a3eb5f8/executions",
+                    {
+                        data: JSON.stringify({ emails: data.split(",") }),
+                        async: true,
+                    },
+                    {
+                        headers: {
+                            "X-Appwrite-Project": "6456b0de0dcdeaf88721",
+                        },
+                    }
+                );
+                setData("");
+                console.log(res);
+
+                toast({
+                    title: "Added students",
+                    status: "success",
+                    duration: 4000,
+                });
+            } catch (error) {
+                console.log(error);
+            } finally {
+                onClose();
+            }
         }
     };
 

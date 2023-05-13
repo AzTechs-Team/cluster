@@ -26,10 +26,11 @@ import "swiper/css/pagination";
 import { Mousewheel, Pagination } from "swiper";
 import Link from "next/link";
 import { useRecoilState } from "recoil";
-import { eventsState } from "@/provider";
+import { eventsState, userDetailsState } from "@/provider";
 
 const Details = () => {
-    const user = users[0];
+    // const user = users[0];
+    const [user, setUser] = useRecoilState(userDetailsState);
     const [value, onChange] = useState(new Date());
     const [events, setEvents] = useRecoilState(eventsState);
     const [activeEvents, setActiveEvents] = useState(Array<EventProps>);

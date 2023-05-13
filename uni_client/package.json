@@ -6,7 +6,8 @@
     "dev": "next dev --port 3001",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next export"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.0.17",
@@ -20,6 +21,7 @@
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
     "appwrite": "^11.0.0",
+    "axios": "^1.4.0",
     "framer-motion": "^10.0.1",
     "graphql": "^16.6.0",
     "graphql-request": "^5.2.0",

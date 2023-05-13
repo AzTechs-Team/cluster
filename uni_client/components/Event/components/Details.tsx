@@ -18,10 +18,15 @@ import {
     Text,
     useDisclosure,
     Button,
+    useToast,
 } from "@chakra-ui/react";
 import { EventProps } from "@/models/contentModels";
 import Link from "next/link";
 import Content from "./Content";
+import axios from "axios";
+import { useRecoilState } from "recoil";
+import { userDetailsState } from "@/provider";
+import { getUserDetails } from "@/helpers/appwrite";
 
 interface OverviewModel {
     icon: string;
@@ -48,6 +53,63 @@ const Overview: React.FC<OverviewModel> = (props) => {
 };
 
 const Details: FC<EventProps> = (props) => {
+    const toast = useToast();
+    const [user, setUser] = useRecoilState(userDetailsState);
+
+    const register = async () => {
+        try {
+            const res = await axios.post(
+                "https://cloud.appwrite.io/v1/functions/645ebd0ede1ec7a939f6/executions",
+                {
+                    data: JSON.stringify({ eventId: props.$id, participantId: user.id }),
+                    async: true,
+                },
+                {
+                    headers: {
+                        "X-Appwrite-Project": "6456b0de0dcdeaf88721",
+                    },
+                }
+            );
+            console.log(res);
+
+            const r = await getUserDetails(user.id);
+            if (r) {
+                setUser({
+                    bio: r.bio,
+                    id: r.$id,
+                    eventId: r.eventId,
+                    userEmail: r.userEmail,
+                    userName: r.userName,
+                    userType: r.userType,
+                    onBoarded: r.onBoarded,
+                });
+
+                localStorage.removeItem("user");
+
+                localStorage.setItem(
+                    "user",
+                    JSON.stringify({
+                        bio: r.bio,
+                        id: r.$id,
+                        eventId: r.eventId,
+                        userEmail: r.userEmail,
+                        userName: r.userName,
+                        userType: r.userType,
+                        onBoarded: r.onBoarded,
+                    })
+                );
+            }
+
+            toast({
+                title: "Thank you for registering!",
+                status: "success",
+                duration: 4000,
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     return (
         <>
             <Box pt={12} px={{ base: 0, xl: 10 }} mb={{ base: 20, lg: 36 }}>
@@ -105,16 +167,11 @@ const Details: FC<EventProps> = (props) => {
                                 description={props.time}
                             />
                         </Stack>
-                        {/* <Flex
-                            className={"glassEffect"}
-                            p={2}
-                            borderRadius="full"
-                            w={"full"}
-                        >
-                            <Button variant={"primary"} size={"md"} w={"full"}>
+                        <Flex className={"glassEffect"} p={2} borderRadius="full" w={"full"}>
+                            <Button variant={"primary"} size={"md"} w={"full"} onClick={register}>
                                 Register now
                             </Button>
-                        </Flex> */}
+                        </Flex>
                     </Flex>
 
                     <Box
@@ -126,7 +183,7 @@ const Details: FC<EventProps> = (props) => {
                         zIndex={20}
                         px={{ base: 6, md: 12, lg: 24 }}
                     >
-                        {/* <Flex
+                        <Flex
                             className={"glassEffect"}
                             p={2}
                             borderRadius="full"
@@ -134,10 +191,10 @@ const Details: FC<EventProps> = (props) => {
                             justify={"space-between"}
                             align={"center"}
                         >
-                            <Button variant={"primary"} size={"lg"} w={"full"}>
+                            <Button variant={"primary"} size={"lg"} w={"full"} onClick={register}>
                                 Register now
                             </Button>
-                        </Flex> */}
+                        </Flex>
                     </Box>
                 </Flex>
             </Box>
