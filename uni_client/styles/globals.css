@@ -1,0 +1,83 @@
+
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+div .chakra-popover__popper {
+  transform: translate3d(0, 4.25rem, 0) !important;
+  width: 100% !important;
+}
+
+section .chakra-popover__content {
+  transform: translate3d(0, 4.25rem, 0) !important;
+}
+
+.hideScrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.hideScrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.glassEffect {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: saturate(180%) blur(8px);
+  transition: all ease-in 500ms;
+}
+
+.removeGlassEffect{
+  background: rgba(0, 0, 0, 0);
+  transition: all ease-in 500ms;
+}
+
+.multilineWrap {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.innerShadowPrimary {
+  background: #fff4f5;
+  box-shadow: inset 0px -24px 64px -8px rgba(210, 116, 116, 0.24);
+}
+
+.dots {
+  background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255, 0.2) 2px, transparent 0);
+  background-size: 40px 40px;
+}
+
+.hideCard{
+  display: none;
+}
+
+.showCard{
+  display: flex;
+}
+
+.map {
+  height: 100%;
+  width: 100%;
+  border: 0;
+  border-radius: 1rem;
+}
+
+.swiper-pagination-bullet {
+  width: 15px !important;
+  height: 15px !important;
+  background-color: #353434 !important;
+}
+
+.swiper-pagination {
+  right: 0 !important;
+  margin-right: 15px;
+}
+
+.dateHighlight{
+  color: #CCBB90;
+  font-weight: 700;
+}

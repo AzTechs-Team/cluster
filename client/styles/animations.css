@@ -1,0 +1,109 @@
+.navAnimation {
+    display: inline-block !important;
+}
+
+.navAnimation::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 4px;
+    transition: width .3s;
+    background: linear-gradient(#D5C8F9, #9186BF);
+}
+
+.redNavAnimation::after{
+    background: linear-gradient(#F7F9FC, #D5C8F9);
+}
+
+.navAnimation:hover {
+    -webkit-text-stroke-width: 0.6px;
+    color: #9186BF;
+}
+
+.navAnimation:hover::after {
+    width: 100%;
+}
+
+.activeNav {
+    color: #9186BF;
+    -webkit-text-stroke-width: 0.6px;
+}
+
+.activeNav::after {
+    width: 100%;
+}
+
+.chakra-button {
+    display: inline-flex !important;
+    background-size: 250% 100% !important;
+    background-position: right bottom !important;
+    transition: all .5s ease-out !important;
+}
+
+.chakra-button:hover {
+    background-position: left bottom !important;
+}
+
+@keyframes text-color-slide {
+    to {
+        background-position: 200% center;
+    }
+}
+
+.chakra-heading {
+    background-size: 200% !important;
+    animation: text-color-slide 3s linear infinite;
+}
+
+@keyframes slide-enter {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.hide {
+    opacity: 0;
+}
+
+.slideBox {
+    animation: slide-enter ease 1500ms;
+}
+
+.imageAnimation img {
+    overflow: hidden;
+    transition: transform 500ms ease-in-out;
+}
+
+.imageAnimation:hover img {
+    transform: scale(1.08);
+}
+
+.cardWithPrimaryButtonAnimation:hover button {
+    background-position: left bottom !important;
+    color: white;
+}
+
+@keyframes hover-animation {
+    0% {
+        transform: translateY(-1%);
+    }
+
+    50% {
+        transform: translateY(1%);
+
+    }
+
+    100% {
+        transform: translateY(-1%);
+    }
+}
+
+.hover {
+    animation: hover-animation ease-in-out 3s infinite;
+}
